@@ -49,7 +49,7 @@ ffmpeg -y -loop 1 -i gp_14.JPG \
 echo "=== カット4: gp_17 鮮魚タイトズーム (12.5-17.0s / メイン中盤) ==="
 FRAMES4=$(python3 -c "print(int(${D4}*${FPS}))")
 ffmpeg -y -loop 1 -i gp_17.JPG \
-  -vf "scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,zoompan=z='1.5-0.15*on/${FRAMES4}':x='iw/2-(iw/zoom/2)':y='ih*0.35-(ih/zoom/2)*0.3':d=${FRAMES4}:s=${W}x${H}:fps=${FPS},drawtext=fontfile=${FONT_BOLD}:text='今日のおすすめ、揃ってます':fontsize=48:fontcolor=white:borderw=3:bordercolor=black@0.6:x=(w-text_w)/2:y=h*0.82:alpha='if(lt(t,0.5),t/0.5,if(gt(t,${D4}-0.5),(${D4}-t)/0.5,1))'" \
+  -vf "scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,zoompan=z='1.2-0.1*on/${FRAMES4}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${FRAMES4}:s=${W}x${H}:fps=${FPS},drawtext=fontfile=${FONT_BOLD}:text='今日のおすすめ、揃ってます':fontsize=48:fontcolor=white:borderw=3:bordercolor=black@0.6:x=(w-text_w)/2:y=h*0.82:alpha='if(lt(t,0.5),t/0.5,if(gt(t,${D4}-0.5),(${D4}-t)/0.5,1))'" \
   -c:v libx264 -pix_fmt yuv420p -t ${D4} /tmp/v3_clip_03.mp4
 
 echo "=== カット5: gp_13 おでん引き (17.0-21.0s / メイン後半) ==="
