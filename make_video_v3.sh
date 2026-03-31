@@ -37,7 +37,7 @@ ffmpeg -y -loop 1 -i /tmp/spring_opening.png \
 echo "=== カット2: gp_18 鮮魚アップ (3.5-8.0s / ビルドアップ) ==="
 FRAMES2=$(python3 -c "print(int(${D2}*${FPS}))")
 ffmpeg -y -loop 1 -i gp_18.JPG \
-  -vf "scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,zoompan=z='1.0+0.3*on/${FRAMES2}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${FRAMES2}:s=${W}x${H}:fps=${FPS},drawtext=fontfile=${FONT_BOLD}:text='朝獲れ鮮魚の、お造り':fontsize=48:fontcolor=white:borderw=3:bordercolor=black@0.6:x=(w-text_w)/2:y=h*0.82:alpha='if(lt(t,0.5),t/0.5,if(gt(t,${D2}-0.5),(${D2}-t)/0.5,1))'" \
+  -vf "scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,zoompan=z='1.0+0.3*on/${FRAMES2}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${FRAMES2}:s=${W}x${H}:fps=${FPS},drawtext=fontfile=${FONT_BOLD}:text='厳選した鮮魚の、お造り':fontsize=48:fontcolor=white:borderw=3:bordercolor=black@0.6:x=(w-text_w)/2:y=h*0.82:alpha='if(lt(t,0.5),t/0.5,if(gt(t,${D2}-0.5),(${D2}-t)/0.5,1))'" \
   -c:v libx264 -pix_fmt yuv420p -t ${D2} /tmp/v3_clip_01.mp4
 
 echo "=== カット3: gp_14 おでんアップ (8.0-12.5s / メイン前半) ==="
